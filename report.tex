@@ -421,6 +421,40 @@ CV Folds & 5 \\
 
 The moderate macro F1-score reflects the inherent challenge of 25-class classification with a small synthetic dataset. However, per-class performance varies significantly depending on the distinctiveness of a scheme's eligibility criteria. Schemes with highly specific and non-overlapping eligibility profiles --- such as \texttt{disability-pension} (F1 = 1.00), \texttt{widow-pension} (F1 = 1.00), and \texttt{minority-scholarship} (F1 = 0.97) --- achieve near-perfect classification. Generic schemes with broad or overlapping eligibility conditions (such as general BPL-based schemes applicable to any demographic) are harder to distinguish and exhibit lower per-class scores. This behavior is expected and acceptable because the classifier serves solely as a \textbf{supplementary confidence signal}: the primary ranking mechanism remains the rule-based filter and TF-IDF cosine similarity, which are unaffected by classifier ambiguity.
 
+\subsection{Training Loss and Convergence}
+To assess optimisation behaviour and generalisation of the One-vs-Rest Logistic Regression classifier, the categorical cross-entropy loss is computed both on the full training set and via 5-Fold cross-validation. For a sample $i$ with true label $y_i$ and predicted probability vector $\hat{p}_i$ over $C$ classes, the loss is
+
+\begin{equation}
+    \mathcal{L} \;=\; -\frac{1}{N}\sum_{i=1}^{N}\sum_{c=1}^{C} \mathbb{1}[y_i = c]\,\log \hat{p}_{i,c}.
+\end{equation}
+
+Because the classifier is a One-vs-Rest wrapper, each of the 25 underlying L-BFGS optimisers is fitted independently; the wall-clock convergence of each is tracked via its \texttt{n\_iter\_} attribute. Table~\ref{tab:training_loss} summarises the resulting metrics over 427 synthetic profile samples.
+
+\begin{table}[htbp]
+\centering
+\caption{Classifier Training Loss and L-BFGS Convergence}
+\label{tab:training_loss}
+\begin{tabularx}{\linewidth}{@{}X c@{}}
+\toprule
+\textbf{Metric} & \textbf{Value} \\
+\midrule
+Synthetic training samples & 427 \\
+Scheme classes (One-vs-Rest estimators) & 25 \\
+\midrule
+Full-data cross-entropy training loss & 1.8719 \\
+5-Fold mean training loss & $1.9310 \pm 0.0065$ \\
+5-Fold mean validation loss & $2.4386 \pm 0.0241$ \\
+Generalisation gap (val $-$ train) & 0.5076 \\
+\midrule
+Mean L-BFGS iterations to convergence & 17.08 \\
+Min / Max iterations across estimators & 14 / 19 \\
+Estimators converged within max\_iter (1000) & 25 / 25 (100\%) \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+All 25 per-class L-BFGS optimisers converge in fewer than 20 iterations, well below the configured \texttt{max\_iter}=1000 ceiling, indicating that the loss surface induced by the TF-IDF features is well-conditioned and that no further training budget is required. The modest train-vs-validation generalisation gap of $\approx 0.51$ nats reflects the limited sample-per-class volume ($\approx 17$ profiles per scheme) of the synthetic dataset rather than overfitting --- a finding consistent with the macro-F1 differential between distinctive and overlapping scheme classes already discussed.
+
 \subsection{Recommendation Engine Accuracy}
 Beyond classification, the system's primary utility lies in ranking the most relevant schemes at the top of the recommendation list. The engine was benchmarked against 20 diverse mock user profiles, each representing a distinct demographic combination (varying age, income, caste, gender, and occupation tags such as student, farmer, and BPL), with manually defined ground-truth expected schemes. The results are shown in Table~\ref{tab:recsys_metrics}.
 
@@ -522,6 +556,43 @@ The lexicon-based sentiment scorer assigns 16 schemes (64\%) a \emph{positive} t
 \end{figure}
 
 End-to-end fitting of the full analytical pipeline---LDA, semantic clustering, sentiment, and keyword extraction---completes in well under a second on the seed corpus and is therefore amortised harmlessly into the FastAPI startup phase, after which all eight \texttt{/api/analysis/*} endpoints serve from cached state with sub-millisecond response times.
+
+\subsection{Analyzer Fit Diagnostics}
+Although the analytical pipeline is unsupervised and therefore does not produce a classification accuracy figure, each component exposes intrinsic fit metrics that quantify how well the model has captured corpus structure. Table~\ref{tab:analyzer_diagnostics} reports those diagnostics for the seed-corpus fit.
+
+\begin{table}[htbp]
+\centering
+\caption{Unsupervised Analyzer Fit Diagnostics (Seed Corpus)}
+\label{tab:analyzer_diagnostics}
+\begin{tabularx}{\linewidth}{@{}X c@{}}
+\toprule
+\textbf{Metric} & \textbf{Value} \\
+\midrule
+\multicolumn{2}{l}{\textit{LDA topic model}} \\
+\quad Topics ($K$) & 6 \\
+\quad Variational EM iterations & 15 \\
+\quad Vocabulary tokens (CountVectorizer features) & 710 \\
+\quad Total log-likelihood ($\log p(D \mid \alpha, \beta)$) & $-3{,}341.74$ \\
+\quad Perplexity (per-word) & 110.68 \\
+\midrule
+\multicolumn{2}{l}{\textit{Semantic clustering ($k$-means over TF-IDF backend)}} \\
+\quad Clusters ($K$) & 6 \\
+\quad Within-cluster sum-of-squares (inertia) & 16.29 \\
+\quad Silhouette coefficient & 0.058 \\
+\midrule
+\multicolumn{2}{l}{\textit{Lexicon sentiment ($N=25$ schemes)}} \\
+\quad Mean polarity ($\overline{p}$) & 0.5106 \\
+\quad Standard deviation ($\sigma_p$) & 0.5408 \\
+\quad Median polarity & 0.6000 \\
+\quad Min / Max polarity & $-1.0000\ /\ +1.0000$ \\
+\midrule
+\multicolumn{2}{l}{\textit{Keyword extraction}} \\
+\quad Aggregated cloud terms (TF-IDF) & 60 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The LDA model attains a per-word perplexity of approximately 110.7 over a 710-token vocabulary and converges within 15 variational-EM iterations --- a healthy figure for $K=6$ topics on a corpus of only 25 documents. The $k$-means silhouette of $0.058$, while modest, is expected for short policy text where semantic boundaries between e.g.\ ``housing'' and ``rural welfare'' or ``scholarship'' and ``minority welfare'' overlap heavily by design; the low score reflects \emph{soft} cluster boundaries rather than a fitting failure, and the LDA topic distribution provides a complementary, mixture-based view that captures this overlap explicitly. On the sentiment side, the high standard deviation ($\sigma_p \approx 0.54$) alongside a strongly positive mean ($\overline{p} \approx 0.51$) indicates that while the corpus is overwhelmingly empowerment-oriented, individual schemes vary widely in tone, validating the use of polarity as a per-scheme discriminative feature in the dashboard.
 
 \section{Conclusion and Future Scope}
 The GovScheme Advisor successfully establishes an intelligent, full-stack recommendation framework for Indian government welfare scheme discovery, augmented by a parallel policy-analysis pipeline that exposes the thematic, lexical, and tonal structure of the welfare corpus. By eschewing computationally heavy generative AI in favor of a tightly integrated, dual-pipeline architecture---a hybrid recommender combining rule-based filtering, TF-IDF semantic matching, and a lightweight Logistic Regression classifier; and an analyzer combining LDA, semantic clustering, lexicon-based sentiment, and TF-IDF keyword extraction---the system achieves rapid response times (average 17.30 ms end-to-end), strong recommendation quality (MRR 0.8683), and fully deterministic, auditable eligibility decisions, while simultaneously surfacing 6 distinct policy themes and a corpus-level sentiment landscape from the same seed data.

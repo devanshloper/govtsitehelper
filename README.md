@@ -52,6 +52,35 @@ Additionally, the project includes an **Intelligent NLP Web Scraper** (`backend/
 - Automatically structures and inserts the scraped schemes into MongoDB.
 
 The system also features an **Admin Dashboard** (available at `/admin` on the frontend) where you can view live database analytics, check the NLP model status, and trigger the Wikipedia scraper to refresh the database with a single click.
+
+## 🧬 Policy Analysis Dashboard (`/analysis`)
+
+A second NLP pipeline runs alongside the recommender and powers a dedicated dashboard at `/analysis` on the frontend. It treats the scheme corpus as a policy-document collection and produces:
+
+| Capability | Method | Surface |
+|---|---|---|
+| **Topic modeling** | `sklearn` Latent Dirichlet Allocation over CountVectorizer features | Topic explorer with per-topic top words and member schemes |
+| **Semantic / "BERTopic"-style topics** | Sentence-transformer embeddings (`all-MiniLM-L6-v2`) clustered with K-Means; falls back to TF-IDF + K-Means when `sentence-transformers` is not installed | Toggle in the topic explorer |
+| **Keyword extraction** | TF-IDF top-N per scheme, aggregated into a corpus-wide cloud | Keyword cloud + per-scheme keyword lists |
+| **Sentiment / policy tone** | Lexicon-based (positive/negative wordlists tuned for policy text), no external corpus download | Tone breakdown + sentiment-by-state and sentiment-by-category panels |
+| **Cross-cuts** | Aggregations over `state` and `category` fields | Distribution and polarity panels |
+
+The analyzer is **fitted once at FastAPI startup** (`nlp.analysis.policy_analyzer.fit(schemes)`) and served from cached state through `/api/analysis/*`. For the static GitHub Pages build, `python backend/generate_static_analysis.py` materialises the same bundle to `frontend/public/analysis.json`; the Analysis page tries the API first and falls back to that file automatically.
+
+### Analysis API
+
+| Endpoint | Returns |
+|---|---|
+| `GET /api/analysis/overview` | Full bundle (used by the dashboard) |
+| `GET /api/analysis/summary` | Counts and sentiment breakdown |
+| `GET /api/analysis/topics?kind=lda\|semantic` | Topic list with top words and member counts |
+| `GET /api/analysis/topic/{id}?kind=lda\|semantic` | Schemes assigned to a given topic |
+| `GET /api/analysis/keywords[?scheme_id=]` | Keyword cloud or per-scheme keywords |
+| `GET /api/analysis/sentiment` | Corpus, by-state, and by-category sentiment |
+| `GET /api/analysis/comparison` | Distribution and polarity matrices |
+| `GET /api/analysis/scheme/{id}` | Per-scheme keywords, sentiment, assigned topics |
+| `POST /api/admin/analysis/refit` | Refit the analyzer on the current DB (admin only) |
+
 ## 📊 Evaluation Metrics
 
 The system was evaluated across three categories to measure ML accuracy, recommendation quality, and system performance.
@@ -159,9 +188,11 @@ govtsitehelper/
 │   ├── nlp/
 │   │   ├── engine.py             # Rule-based + TF-IDF + Classifier logic
 │   │   ├── trainer.py            # ML classifier training & persistence
+│   │   ├── analysis.py           # LDA + semantic topics + keywords + sentiment
 │   │   └── models/               # Saved .pkl model files
 │   ├── api/
-│   │   └── routes.py             # API Endpoints (Auth, Recommend, Search, Admin)
+│   │   └── routes.py             # API Endpoints (Auth, Recommend, Search, Analysis, Admin)
+│   ├── generate_static_analysis.py  # Emits frontend/public/analysis.json for static hosting
 │   ├── scraper/
 │   │   └── scraper.py            # Web Scraper (BeautifulSoup)
 │   ├── test_recsys_metrics.py    # Evaluation: Precision@5 & MRR
@@ -177,9 +208,12 @@ govtsitehelper/
         ├── index.css             # Tailwind setup & theme
         ├── components/
         │   └── Navbar.jsx        # Navigation bar
-        └── pages/
-            ├── Home.jsx          # Multi-column form UI
-            ├── Search.jsx        # NLP Semantic Search UI
-            ├── Dashboard.jsx     # Result ranking & details UI
-            └── Admin.jsx         # Admin Dashboard for DB & Scraper management
+        ├── pages/
+        │   ├── Home.jsx          # Multi-column form UI
+        │   ├── Search.jsx        # NLP Semantic Search UI
+        │   ├── Analysis.jsx      # Policy analysis dashboard (LDA + sentiment + keywords)
+        │   ├── Dashboard.jsx     # Result ranking & details UI
+        │   └── Admin.jsx         # Admin Dashboard for DB & Scraper management
+        └── public/
+            └── analysis.json     # Pre-computed analysis bundle for static hosting
 ```

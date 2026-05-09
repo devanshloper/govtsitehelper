@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Landmark, Search, User, Shield } from 'lucide-react';
+import { Landmark, Search, User, Shield, BarChart3 } from 'lucide-react';
 
 const Navbar = () => {
   const location = useLocation();
@@ -8,6 +8,7 @@ const Navbar = () => {
   const navLinks = [
     { name: 'Home', path: '/', icon: <Landmark className="w-5 h-5 mr-1" /> },
     { name: 'Search', path: '/search', icon: <Search className="w-5 h-5 mr-1" /> },
+    { name: 'Analysis', path: '/analysis', icon: <BarChart3 className="w-5 h-5 mr-1" /> },
     { name: 'Dashboard', path: '/dashboard', icon: <User className="w-5 h-5 mr-1" /> },
     { name: 'Admin', path: '/admin', icon: <Shield className="w-5 h-5 mr-1" /> },
   ];

@@ -16,6 +16,7 @@ from models import UserProfile, SearchQuery, UserAuth, Token, SchemeModel
 from database import get_db
 from nlp.engine import nlp_engine
 from nlp.trainer import train_and_save, load_model_meta
+from nlp.analysis import policy_analyzer
 from scraper.scraper import run_full_scrape
 from seed_data import SCHEMES
 
@@ -445,6 +446,110 @@ async def explain_scheme(data: dict):
         raise HTTPException(status_code=400, detail="Text required")
     simplified = nlp_engine.simplify_text(text)
     return {"original": text, "simplified": simplified}
+
+
+# ──────────────────────────────────────────────
+# POLICY ANALYSIS ENDPOINTS
+#   LDA topics, semantic (BERTopic-style) topics, keywords, sentiment, comparisons
+#   Backed by nlp.analysis.PolicyAnalyzer (fitted at startup in main.py)
+# ──────────────────────────────────────────────
+
+
+def _ensure_fitted():
+    if not policy_analyzer.schemes:
+        raise HTTPException(status_code=503, detail="Analyzer not fitted yet. Try again in a moment.")
+
+
+@router.get("/analysis/overview")
+async def analysis_overview():
+    """Full pre-computed analysis bundle. Used by the Analysis dashboard."""
+    _ensure_fitted()
+    return policy_analyzer.full_bundle()
+
+
+@router.get("/analysis/summary")
+async def analysis_summary():
+    """Lightweight summary: counts, sentiment breakdown, backend used."""
+    _ensure_fitted()
+    return policy_analyzer.summary()
+
+
+@router.get("/analysis/topics")
+async def analysis_topics(kind: str = "lda"):
+    """Topics from either LDA (default) or semantic clustering."""
+    _ensure_fitted()
+    if kind == "semantic":
+        return {"kind": "semantic", "backend": policy_analyzer.semantic_backend, "topics": policy_analyzer.semantic_topics()}
+    return {"kind": "lda", "topics": policy_analyzer.lda_topics()}
+
+
+@router.get("/analysis/topic/{topic_id}")
+async def schemes_in_topic(topic_id: int, kind: str = "lda", limit: int = 20):
+    """Schemes assigned to a given topic, ranked by topic affinity."""
+    _ensure_fitted()
+    return {
+        "kind": kind,
+        "topic_id": topic_id,
+        "schemes": policy_analyzer.schemes_in_topic(topic_id, kind=kind, limit=limit),
+    }
+
+
+@router.get("/analysis/keywords")
+async def analysis_keywords(scheme_id: Optional[str] = None, top_n: int = 60):
+    """Keyword cloud across all schemes, or per-scheme if scheme_id is given."""
+    _ensure_fitted()
+    if scheme_id:
+        kws = policy_analyzer.keywords_per_scheme.get(scheme_id)
+        if kws is None:
+            raise HTTPException(status_code=404, detail="Scheme not found in analyzer")
+        return {"scheme_id": scheme_id, "keywords": kws}
+    return {"cloud": policy_analyzer.keyword_cloud(top_n=top_n)}
+
+
+@router.get("/analysis/sentiment")
+async def analysis_sentiment():
+    """Sentiment breakdown across the corpus, plus state/category averages."""
+    _ensure_fitted()
+    return {
+        "summary": policy_analyzer.sentiment_summary(),
+        "by_state": policy_analyzer.state_sentiment_matrix(),
+        "by_category": policy_analyzer.category_sentiment_matrix(),
+    }
+
+
+@router.get("/analysis/comparison")
+async def analysis_comparison():
+    """Cross-tab comparison: state and category distributions."""
+    _ensure_fitted()
+    return {
+        "by_state": policy_analyzer.state_distribution(),
+        "by_category": policy_analyzer.category_distribution(),
+        "state_sentiment": policy_analyzer.state_sentiment_matrix(),
+        "category_sentiment": policy_analyzer.category_sentiment_matrix(),
+    }
+
+
+@router.get("/analysis/scheme/{scheme_id}")
+async def analysis_scheme(scheme_id: str):
+    """Per-scheme analysis: keywords, sentiment, assigned topics."""
+    _ensure_fitted()
+    result = policy_analyzer.scheme_analysis(scheme_id)
+    if result is None:
+        raise HTTPException(status_code=404, detail="Scheme not found")
+    return result
+
+
+@router.post("/admin/analysis/refit", dependencies=[Depends(require_admin)])
+async def refit_analysis():
+    """Refit the policy analyzer on the current scheme corpus."""
+    db = get_db()
+    schemes = []
+    async for s in db.schemes.find({"status": "active"}):
+        s.pop("_id", None)
+        schemes.append(s)
+    if not schemes:
+        schemes = SCHEMES
+    return policy_analyzer.fit(schemes)
 
 
 # ──────────────────────────────────────────────

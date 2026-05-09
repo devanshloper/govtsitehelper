@@ -21,6 +21,7 @@ from database import connect_db, close_db, get_db
 from api.routes import router
 from seed_data import SCHEMES
 from nlp.engine import nlp_engine
+from nlp.analysis import policy_analyzer
 from nlp.trainer import train_and_save, load_model, MODEL_PATH
 
 
@@ -84,7 +85,20 @@ async def lifespan(app: FastAPI):
             print("  ✅ NLP classifier loaded from disk.")
         else:
             print("  ⚠️  Classifier pkl exists but failed to load.")
-    
+
+    # Fit the policy analyzer (LDA topics, semantic clusters, keywords, sentiment)
+    print("  🧬 Fitting policy analyzer (LDA + semantic topics + sentiment)...")
+    try:
+        analysis_summary = policy_analyzer.fit(schemes_list)
+        print(
+            f"  ✅ Analyzer ready — {analysis_summary['n_schemes']} schemes, "
+            f"{analysis_summary['n_topics_lda']} LDA topics, "
+            f"{analysis_summary['n_topics_semantic']} semantic topics "
+            f"(backend: {analysis_summary['semantic_backend']})."
+        )
+    except Exception as exc:
+        print(f"  ⚠️  Analyzer fit failed: {exc}")
+
     print("  🚀 Server ready!\n")
     
     yield

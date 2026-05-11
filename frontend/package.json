@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://lokeshanand1.github.io/govtsitehelper/",
+  "homepage": "https://devanshloper.github.io/govtsitehelper/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

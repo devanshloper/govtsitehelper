@@ -87,23 +87,37 @@ def _clean(text: str) -> str:
 
 
 def _label_topic(top_words: List[str]) -> str:
-    """Heuristic human-readable label from topic top words."""
+    """Label a topic using anchor-word rules; derive label from top words when no anchor matches."""
     s = " ".join(top_words).lower()
     rules = [
-        ("Health & Insurance", ("health", "medical", "hospital", "insurance", "ayushman", "disease")),
+        ("Health & Insurance",      ("health", "medical", "hospital", "insurance", "ayushman", "disease")),
         ("Education & Scholarship", ("scholarship", "student", "education", "school", "college", "exam")),
-        ("Agriculture & Farmer", ("farmer", "crop", "agriculture", "kisan", "land", "irrigation")),
-        ("Pension & Senior", ("pension", "senior", "elderly", "old", "vrid")),
-        ("Women & Child", ("women", "girl", "mother", "widow", "child", "balika", "mahila")),
-        ("Housing & Shelter", ("house", "housing", "awas", "shelter", "home", "pradhan mantri awas")),
-        ("Employment & Skill", ("employment", "job", "skill", "training", "kaushal", "rozgar", "mgnrega")),
-        ("Finance & Loan", ("loan", "credit", "bank", "mudra", "startup", "msme", "finance")),
-        ("Social Security", ("social", "security", "disability", "minority", "sc", "st", "obc")),
-        ("Food & Nutrition", ("food", "ration", "nutrition", "midday", "pds")),
+        ("Agriculture & Farmer",    ("farmer", "crop", "agriculture", "kisan", "land", "irrigation")),
+        ("Pension & Senior",        ("pension", "senior", "elderly", "old", "vrid")),
+        ("Women & Child",           ("women", "girl", "mother", "widow", "child", "balika", "mahila")),
+        ("Housing & Shelter",       ("house", "housing", "awas", "shelter", "home")),
+        ("Employment & Skill",      ("employment", "job", "skill", "training", "kaushal", "rozgar", "mgnrega")),
+        ("Finance & Loan",          ("loan", "credit", "bank", "mudra", "startup", "msme", "finance")),
+        ("Social Security",         ("social", "security", "disability", "minority", "sc", "st", "obc")),
+        ("Food & Nutrition",        ("food", "ration", "nutrition", "midday", "pds")),
     ]
+    # Require at least 2 anchor words to match before assigning a label, preventing
+    # single stray words (e.g. "insurance" appearing in a mixed topic) from mislabeling.
+    for label, kws in rules:
+        if sum(1 for kw in kws if kw in s) >= 2:
+            return label
+    # Single-word match is still valid for strong anchors unlikely to appear by chance.
     for label, kws in rules:
         if any(kw in s for kw in kws):
             return label
+    # No anchor matched — derive a label from the topic's own top meaningful words
+    # so every topic gets an accurate, data-driven name instead of a wrong default.
+    _GENERIC = {"rs", "lakh", "scheme", "schemes", "government", "india", "state",
+                "national", "central", "pm", "ministry", "yojana", "pradhan", "mantri"}
+    meaningful = [w for w in top_words if len(w) > 3 and w not in _GENERIC][:3]
+    if meaningful:
+        parts = [w.capitalize() for w in meaningful]
+        return ", ".join(parts[:-1]) + " & " + parts[-1] if len(parts) > 1 else parts[0]
     return "General Welfare"
 
 

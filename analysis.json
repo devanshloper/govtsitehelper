@@ -1,0 +1,1417 @@
+{
+  "summary": {
+    "fitted": true,
+    "n_schemes": 25,
+    "n_topics_lda": 6,
+    "n_topics_semantic": 6,
+    "semantic_backend": "tfidf",
+    "sentiment_summary": {
+      "total": 25,
+      "positive": 16,
+      "neutral": 8,
+      "negative": 1,
+      "avg_polarity": 0.511
+    }
+  },
+  "lda_topics": [
+    {
+      "topic_id": 0,
+      "label": "Health & Insurance",
+      "top_words": [
+        "rs",
+        "insurance",
+        "lakh",
+        "bank",
+        "sc",
+        "account",
+        "coverage",
+        "year",
+        "indian",
+        "years"
+      ],
+      "scheme_count": 5
+    },
+    {
+      "topic_id": 1,
+      "label": "Agriculture & Farmer",
+      "top_words": [
+        "rs",
+        "income",
+        "farmer",
+        "year",
+        "installments",
+        "families",
+        "support",
+        "pm",
+        "family",
+        "bank"
+      ],
+      "scheme_count": 1
+    },
+    {
+      "topic_id": 2,
+      "label": "Education & Scholarship",
+      "top_words": [
+        "rs",
+        "scholarship",
+        "students",
+        "post",
+        "000",
+        "lakh",
+        "maintenance",
+        "allowance",
+        "income",
+        "tuition"
+      ],
+      "scheme_count": 6
+    },
+    {
+      "topic_id": 3,
+      "label": "Women & Child",
+      "top_words": [
+        "lakh",
+        "subsidy",
+        "employment",
+        "rs",
+        "rural",
+        "15",
+        "project",
+        "cost",
+        "income",
+        "women"
+      ],
+      "scheme_count": 3
+    },
+    {
+      "topic_id": 4,
+      "label": "Pension & Senior",
+      "top_words": [
+        "pension",
+        "bpl",
+        "families",
+        "rs",
+        "years",
+        "free",
+        "month",
+        "aged",
+        "households",
+        "yojana"
+      ],
+      "scheme_count": 7
+    },
+    {
+      "topic_id": 5,
+      "label": "Health & Insurance",
+      "top_words": [
+        "child",
+        "girl",
+        "farmers",
+        "account",
+        "education",
+        "samriddhi",
+        "sukanya",
+        "insurance",
+        "yojana",
+        "women"
+      ],
+      "scheme_count": 3
+    }
+  ],
+  "semantic_topics": [
+    {
+      "topic_id": 0,
+      "label": "Women & Child",
+      "top_words": [
+        "lakh",
+        "subsidy",
+        "employment",
+        "rs",
+        "st women",
+        "sc st",
+        "rural",
+        "sc",
+        "st",
+        "10 lakh"
+      ],
+      "scheme_count": 5
+    },
+    {
+      "topic_id": 1,
+      "label": "Pension & Senior",
+      "top_words": [
+        "pension",
+        "bpl",
+        "years",
+        "60",
+        "month",
+        "79",
+        "monthly pension",
+        "monthly",
+        "pension rs",
+        "40"
+      ],
+      "scheme_count": 4
+    },
+    {
+      "topic_id": 2,
+      "label": "Education & Scholarship",
+      "top_words": [
+        "child",
+        "girl",
+        "girl child",
+        "rs 000",
+        "000",
+        "samriddhi",
+        "sukanya",
+        "sukanya samriddhi",
+        "women",
+        "education"
+      ],
+      "scheme_count": 3
+    },
+    {
+      "topic_id": 3,
+      "label": "Health & Insurance",
+      "top_words": [
+        "insurance",
+        "rs",
+        "year",
+        "coverage",
+        "bank",
+        "bank account",
+        "rs lakh",
+        "farmers",
+        "account",
+        "lakh"
+      ],
+      "scheme_count": 7
+    },
+    {
+      "topic_id": 4,
+      "label": "Education & Scholarship",
+      "top_words": [
+        "students",
+        "scholarship",
+        "post",
+        "obc",
+        "maintenance allowance",
+        "maintenance",
+        "allowance",
+        "obc students",
+        "scholarship st",
+        "tuition"
+      ],
+      "scheme_count": 4
+    },
+    {
+      "topic_id": 5,
+      "label": "Pension & Senior",
+      "top_words": [
+        "free",
+        "lpg",
+        "families",
+        "households",
+        "priority households",
+        "priority",
+        "bpl",
+        "lpg connection",
+        "women bpl",
+        "connection"
+      ],
+      "scheme_count": 2
+    }
+  ],
+  "sentiment_summary": {
+    "total": 25,
+    "positive": 16,
+    "neutral": 8,
+    "negative": 1,
+    "avg_polarity": 0.511
+  },
+  "keyword_cloud": [
+    {
+      "word": "insurance",
+      "count": 5
+    },
+    {
+      "word": "rs",
+      "count": 4
+    },
+    {
+      "word": "students",
+      "count": 4
+    },
+    {
+      "word": "scholarship",
+      "count": 4
+    },
+    {
+      "word": "bpl",
+      "count": 4
+    },
+    {
+      "word": "pension",
+      "count": 4
+    },
+    {
+      "word": "lakh",
+      "count": 3
+    },
+    {
+      "word": "post",
+      "count": 3
+    },
+    {
+      "word": "women",
+      "count": 3
+    },
+    {
+      "word": "child",
+      "count": 3
+    },
+    {
+      "word": "subsidy",
+      "count": 2
+    },
+    {
+      "word": "disability",
+      "count": 2
+    },
+    {
+      "word": "rs lakh",
+      "count": 2
+    },
+    {
+      "word": "account",
+      "count": 2
+    },
+    {
+      "word": "sc",
+      "count": 2
+    },
+    {
+      "word": "st",
+      "count": 2
+    },
+    {
+      "word": "month",
+      "count": 2
+    },
+    {
+      "word": "free",
+      "count": 2
+    },
+    {
+      "word": "employment",
+      "count": 2
+    },
+    {
+      "word": "girl",
+      "count": 2
+    },
+    {
+      "word": "girl child",
+      "count": 2
+    },
+    {
+      "word": "families",
+      "count": 2
+    },
+    {
+      "word": "farmer",
+      "count": 1
+    },
+    {
+      "word": "rs 6000",
+      "count": 1
+    },
+    {
+      "word": "income support",
+      "count": 1
+    },
+    {
+      "word": "land",
+      "count": 1
+    },
+    {
+      "word": "6000",
+      "count": 1
+    },
+    {
+      "word": "6000 year",
+      "count": 1
+    },
+    {
+      "word": "farmer families",
+      "count": 1
+    },
+    {
+      "word": "income",
+      "count": 1
+    },
+    {
+      "word": "installments",
+      "count": 1
+    },
+    {
+      "word": "support",
+      "count": 1
+    },
+    {
+      "word": "housing",
+      "count": 1
+    },
+    {
+      "word": "home loans",
+      "count": 1
+    },
+    {
+      "word": "12",
+      "count": 1
+    },
+    {
+      "word": "subsidy home",
+      "count": 1
+    },
+    {
+      "word": "home",
+      "count": 1
+    },
+    {
+      "word": "lig",
+      "count": 1
+    },
+    {
+      "word": "lakh mig",
+      "count": 1
+    },
+    {
+      "word": "income lakh",
+      "count": 1
+    },
+    {
+      "word": "balance",
+      "count": 1
+    },
+    {
+      "word": "zero balance",
+      "count": 1
+    },
+    {
+      "word": "rupay debit",
+      "count": 1
+    },
+    {
+      "word": "balance bank",
+      "count": 1
+    },
+    {
+      "word": "debit",
+      "count": 1
+    },
+    {
+      "word": "debit card",
+      "count": 1
+    },
+    {
+      "word": "financial inclusion",
+      "count": 1
+    },
+    {
+      "word": "inclusion",
+      "count": 1
+    },
+    {
+      "word": "zero",
+      "count": 1
+    },
+    {
+      "word": "accidental",
+      "count": 1
+    },
+    {
+      "word": "20 year",
+      "count": 1
+    },
+    {
+      "word": "permanent",
+      "count": 1
+    },
+    {
+      "word": "rs 20",
+      "count": 1
+    },
+    {
+      "word": "20",
+      "count": 1
+    },
+    {
+      "word": "life",
+      "count": 1
+    },
+    {
+      "word": "life insurance",
+      "count": 1
+    },
+    {
+      "word": "coverage",
+      "count": 1
+    },
+    {
+      "word": "436",
+      "count": 1
+    },
+    {
+      "word": "rs 436",
+      "count": 1
+    },
+    {
+      "word": "premium",
+      "count": 1
+    }
+  ],
+  "category_distribution": [
+    {
+      "category": "scholarship",
+      "count": 4
+    },
+    {
+      "category": "women",
+      "count": 4
+    },
+    {
+      "category": "pension",
+      "count": 4
+    },
+    {
+      "category": "farmer",
+      "count": 2
+    },
+    {
+      "category": "social_security",
+      "count": 2
+    },
+    {
+      "category": "insurance",
+      "count": 2
+    },
+    {
+      "category": "startup",
+      "count": 2
+    },
+    {
+      "category": "employment",
+      "count": 2
+    },
+    {
+      "category": "housing",
+      "count": 1
+    },
+    {
+      "category": "health",
+      "count": 1
+    },
+    {
+      "category": "skill_development",
+      "count": 1
+    }
+  ],
+  "state_distribution": [
+    {
+      "state": "All India",
+      "count": 25
+    }
+  ],
+  "state_sentiment": [
+    {
+      "state": "All India",
+      "schemes": 25,
+      "avg_polarity": 0.511
+    }
+  ],
+  "category_sentiment": [
+    {
+      "category": "scholarship",
+      "schemes": 4,
+      "avg_polarity": 0.875
+    },
+    {
+      "category": "women",
+      "schemes": 4,
+      "avg_polarity": 0.833
+    },
+    {
+      "category": "pension",
+      "schemes": 4,
+      "avg_polarity": 0.25
+    },
+    {
+      "category": "farmer",
+      "schemes": 2,
+      "avg_polarity": -0.334
+    },
+    {
+      "category": "social_security",
+      "schemes": 2,
+      "avg_polarity": 0.5
+    },
+    {
+      "category": "insurance",
+      "schemes": 2,
+      "avg_polarity": 0.0
+    },
+    {
+      "category": "startup",
+      "schemes": 2,
+      "avg_polarity": 0.5
+    },
+    {
+      "category": "employment",
+      "schemes": 2,
+      "avg_polarity": 1.0
+    },
+    {
+      "category": "housing",
+      "schemes": 1,
+      "avg_polarity": 0.6
+    },
+    {
+      "category": "health",
+      "schemes": 1,
+      "avg_polarity": 0.0
+    },
+    {
+      "category": "skill_development",
+      "schemes": 1,
+      "avg_polarity": 1.0
+    }
+  ],
+  "schemes_per_lda_topic": [
+    [
+      {
+        "scheme_id": "pmjjby",
+        "name": "Pradhan Mantri Jeevan Jyoti Bima Yojana",
+        "category": "insurance",
+        "state": "All India",
+        "description": "Life insurance scheme with Rs 2 lakh coverage at Rs 436 per year premium.",
+        "keywords": [
+          "insurance",
+          "life",
+          "life insurance",
+          "coverage",
+          "436",
+          "rs 436"
+        ],
+        "sentiment": "neutral"
+      },
+      {
+        "scheme_id": "pmjdy",
+        "name": "Pradhan Mantri Jan Dhan Yojana",
+        "category": "social_security",
+        "state": "All India",
+        "description": "Financial inclusion program providing zero-balance bank accounts with RuPay debit card and insurance coverage.",
+        "keywords": [
+          "balance",
+          "insurance",
+          "zero balance",
+          "rupay debit",
+          "balance bank",
+          "debit"
+        ],
+        "sentiment": "neutral"
+      },
+      {
+        "scheme_id": "pmsby",
+        "name": "Pradhan Mantri Suraksha Bima Yojana",
+        "category": "insurance",
+        "state": "All India",
+        "description": "Accidental insurance scheme offering Rs 2 lakh coverage for just Rs 20 per year.",
+        "keywords": [
+          "accidental",
+          "20 year",
+          "permanent",
+          "disability",
+          "rs",
+          "rs 20"
+        ],
+        "sentiment": "neutral"
+      },
+      {
+        "scheme_id": "standup-india",
+        "name": "Stand-Up India",
+        "category": "startup",
+        "state": "All India",
+        "description": "Bank loans between Rs 10 lakh to Rs 1 crore for SC/ST and women entrepreneurs.",
+        "keywords": [
+          "st women",
+          "sc st",
+          "st",
+          "sc",
+          "entrepreneurs",
+          "women entrepreneurs"
+        ],
+        "sentiment": "neutral"
+      },
+      {
+        "scheme_id": "skill-india",
+        "name": "Pradhan Mantri Kaushal Vikas Yojana",
+        "category": "skill_development",
+        "state": "All India",
+        "description": "Free skill training and certification for Indian youth to improve employability.",
+        "keywords": [
+          "training",
+          "skill",
+          "skill training",
+          "free skill",
+          "youth",
+          "training certification"
+        ],
+        "sentiment": "positive"
+      }
+    ],
+    [
+      {
+        "scheme_id": "pm-kisan",
+        "name": "PM-KISAN Samman Nidhi",
+        "category": "farmer",
+        "state": "All India",
+        "description": "Direct income support of Rs 6000 per year to farmer families in three equal installments.",
+        "keywords": [
+          "farmer",
+          "rs 6000",
+          "income support",
+          "land",
+          "6000",
+          "6000 year"
+        ],
+        "sentiment": "positive"
+      }
+    ],
+    [
+      {
+        "scheme_id": "nsp-st-scholarship",
+        "name": "Post Matric Scholarship for ST Students",
+        "category": "scholarship",
+        "state": "All India",
+        "description": "Scholarship for ST students in post-matriculation courses to promote higher education.",
+        "keywords": [
+          "scholarship st",
+          "st",
+          "students",
+          "scholarship",
+          "st students",
+          "post"
+        ],
+        "sentiment": "positive"
+      },
+      {
+        "scheme_id": "mudra-loan",
+        "name": "Pradhan Mantri MUDRA Yojana",
+        "category": "startup",
+        "state": "All India",
+        "description": "Collateral-free loans up to Rs 10 lakh for micro and small enterprises.",
+        "keywords": [
+          "non",
+          "50 000",
+          "collateral",
+          "non farm",
+          "business",
+          "tarun"
+        ],
+        "sentiment": "positive"
+      },
+      {
+        "scheme_id": "maternity-benefit",
+        "name": "Pradhan Mantri Matru Vandana Yojana",
+        "category": "women",
+        "state": "All India",
+        "description": "Cash benefit of Rs 5000 for pregnant and lactating mothers for first living child.",
+        "keywords": [
+          "rs 000",
+          "000",
+          "child",
+          "pregnant",
+          "lactating mothers",
+          "lactating"
+        ],
+        "sentiment": "positive"
+      },
+      {
+        "scheme_id": "obc-scholarship",
+        "name": "Post Matric Scholarship for OBC Students",
+        "category": "scholarship",
+        "state": "All India",
+        "description": "Financial assistance to OBC students for post-matriculation studies.",
+        "keywords": [
+          "obc",
+          "obc students",
+          "students",
+          "scholarship obc",
+          "post",
+          "scholarship"
+        ],
+        "sentiment": "positive"
+      },
+      {
+        "scheme_id": "nsp-post-matric",
+        "name": "Post Matric Scholarship for SC Students",
+        "category": "scholarship",
+        "state": "All India",
+        "description": "Scholarship for SC students studying post-matriculation courses covering tuition fees and maintenance allowance.",
+        "keywords": [
+          "post",
+          "scholarship sc",
+          "sc",
+          "students",
+          "scholarship",
+          "studying post"
+        ],
+        "sentiment": "positive"
+      },
+      {
+        "scheme_id": "minority-scholarship",
+        "name": "Merit-cum-Means Scholarship for Minorities",
+        "category": "scholarship",
+        "state": "All India",
+        "description": "Scholarship for meritorious students from minority communities pursuing professional and technical courses.",
+        "keywords": [
+          "minority",
+          "scholarship",
+          "minority communities",
+          "communities",
+          "students",
+          "rs"
+        ],
+        "sentiment": "positive"
+      }
+    ],
+    [
+      {
+        "scheme_id": "pmegp",
+        "name": "Prime Minister Employment Generation Programme",
+        "category": "employment",
+        "state": "All India",
+        "description": "Credit-linked subsidy scheme for setting up micro enterprises to generate employment.",
+        "keywords": [
+          "subsidy",
+          "project cost",
+          "cost",
+          "project",
+          "employment",
+          "cost rs"
+        ],
+        "sentiment": "positive"
+      },
+      {
+        "scheme_id": "pmay",
+        "name": "Pradhan Mantri Awas Yojana",
+        "category": "housing",
+        "state": "All India",
+        "description": "Housing for All — provides affordable housing to urban and rural poor with subsidy on home loans.",
+        "keywords": [
+          "subsidy",
+          "housing",
+          "lakh",
+          "home loans",
+          "12",
+          "subsidy home"
+        ],
+        "sentiment": "positive"
+      },
+      {
+        "scheme_id": "nrega",
+        "name": "MGNREGA - Mahatma Gandhi National Rural Employment Guarantee",
+        "category": "employment",
+        "state": "All India",
+        "description": "Guarantees 100 days of wage employment per year to every rural household willing to do unskilled manual work.",
+        "keywords": [
+          "days",
+          "employment",
+          "unskilled",
+          "work",
+          "rural",
+          "manual work"
+        ],
+        "sentiment": "positive"
+      }
+    ],
+    [
+      {
+        "scheme_id": "widow-pension",
+        "name": "Indira Gandhi National Widow Pension",
+        "category": "pension",
+        "state": "All India",
+        "description": "Monthly pension for widows from BPL families aged 40-79 years.",
+        "keywords": [
+          "pension",
+          "bpl",
+          "aged 40",
+          "widows",
+          "widow",
+          "40 79"
+        ],
+        "sentiment": "neutral"
+      },
+      {
+        "scheme_id": "atal-pension",
+        "name": "Atal Pension Yojana",
+        "category": "pension",
+        "state": "All India",
+        "description": "Guaranteed pension of Rs 1000-5000/month after age 60 for unorganized sector workers.",
+        "keywords": [
+          "sector",
+          "unorganized sector",
+          "unorganized",
+          "pension",
+          "workers",
+          "guaranteed pension"
+        ],
+        "sentiment": "positive"
+      },
+      {
+        "scheme_id": "old-age-pension",
+        "name": "Indira Gandhi National Old Age Pension",
+        "category": "pension",
+        "state": "All India",
+        "description": "Monthly pension for senior citizens from BPL households.",
+        "keywords": [
+          "pension",
+          "bpl",
+          "senior",
+          "years rs",
+          "pension senior",
+          "60"
+        ],
+        "sentiment": "neutral"
+      },
+      {
+        "scheme_id": "disability-pension",
+        "name": "Indira Gandhi National Disability Pension",
+        "category": "pension",
+        "state": "All India",
+        "description": "Monthly pension for persons with severe and multiple disabilities from BPL families.",
+        "keywords": [
+          "pension",
+          "disability",
+          "bpl",
+          "multiple disabilities",
+          "multiple",
+          "persons"
+        ],
+        "sentiment": "neutral"
+      },
+      {
+        "scheme_id": "ujjwala",
+        "name": "Pradhan Mantri Ujjwala Yojana",
+        "category": "women",
+        "state": "All India",
+        "description": "Free LPG connections to women from BPL households to replace unclean cooking fuels.",
+        "keywords": [
+          "lpg",
+          "free",
+          "bpl",
+          "lpg connection",
+          "women bpl",
+          "free lpg"
+        ],
+        "sentiment": "positive"
+      },
+      {
+        "scheme_id": "free-ration",
+        "name": "Pradhan Mantri Garib Kalyan Anna Yojana",
+        "category": "social_security",
+        "state": "All India",
+        "description": "Free foodgrains to priority households and Antyodaya families through PDS.",
+        "keywords": [
+          "priority",
+          "priority households",
+          "families",
+          "households",
+          "kg",
+          "anna"
+        ],
+        "sentiment": "positive"
+      },
+      {
+        "scheme_id": "ayushman-bharat",
+        "name": "Ayushman Bharat PM-JAY",
+        "category": "health",
+        "state": "All India",
+        "description": "Health insurance of Rs 5 lakh per family per year for secondary and tertiary hospitalization.",
+        "keywords": [
+          "health",
+          "health insurance",
+          "family year",
+          "covers",
+          "year",
+          "insurance"
+        ],
+        "sentiment": "neutral"
+      }
+    ],
+    [
+      {
+        "scheme_id": "sukanya-samriddhi",
+        "name": "Sukanya Samriddhi Yojana",
+        "category": "women",
+        "state": "All India",
+        "description": "Savings scheme for girl child with high interest rate and tax benefits.",
+        "keywords": [
+          "girl",
+          "girl child",
+          "child",
+          "rate",
+          "tax",
+          "high rate"
+        ],
+        "sentiment": "positive"
+      },
+      {
+        "scheme_id": "beti-bachao",
+        "name": "Beti Bachao Beti Padhao",
+        "category": "women",
+        "state": "All India",
+        "description": "Campaign to protect and educate the girl child, with focus on improving child sex ratio.",
+        "keywords": [
+          "girl",
+          "child",
+          "focus",
+          "beti",
+          "samriddhi account",
+          "samriddhi"
+        ],
+        "sentiment": "positive"
+      },
+      {
+        "scheme_id": "pmfby",
+        "name": "Pradhan Mantri Fasal Bima Yojana",
+        "category": "farmer",
+        "state": "All India",
+        "description": "Crop insurance scheme protecting farmers against crop loss due to natural calamities.",
+        "keywords": [
+          "crop",
+          "farmers",
+          "insurance",
+          "crop loss",
+          "loanee",
+          "crops"
+        ],
+        "sentiment": "negative"
+      }
+    ]
+  ],
+  "schemes_per_semantic_topic": [
+    [
+      {
+        "scheme_id": "pmay",
+        "name": "Pradhan Mantri Awas Yojana",
+        "category": "housing",
+        "state": "All India",
+        "description": "Housing for All — provides affordable housing to urban and rural poor with subsidy on home loans.",
+        "keywords": [
+          "subsidy",
+          "housing",
+          "lakh",
+          "home loans",
+          "12",
+          "subsidy home"
+        ],
+        "sentiment": "positive"
+      },
+      {
+        "scheme_id": "mudra-loan",
+        "name": "Pradhan Mantri MUDRA Yojana",
+        "category": "startup",
+        "state": "All India",
+        "description": "Collateral-free loans up to Rs 10 lakh for micro and small enterprises.",
+        "keywords": [
+          "non",
+          "50 000",
+          "collateral",
+          "non farm",
+          "business",
+          "tarun"
+        ],
+        "sentiment": "positive"
+      },
+      {
+        "scheme_id": "pmegp",
+        "name": "Prime Minister Employment Generation Programme",
+        "category": "employment",
+        "state": "All India",
+        "description": "Credit-linked subsidy scheme for setting up micro enterprises to generate employment.",
+        "keywords": [
+          "subsidy",
+          "project cost",
+          "cost",
+          "project",
+          "employment",
+          "cost rs"
+        ],
+        "sentiment": "positive"
+      },
+      {
+        "scheme_id": "nrega",
+        "name": "MGNREGA - Mahatma Gandhi National Rural Employment Guarantee",
+        "category": "employment",
+        "state": "All India",
+        "description": "Guarantees 100 days of wage employment per year to every rural household willing to do unskilled manual work.",
+        "keywords": [
+          "days",
+          "employment",
+          "unskilled",
+          "work",
+          "rural",
+          "manual work"
+        ],
+        "sentiment": "positive"
+      },
+      {
+        "scheme_id": "standup-india",
+        "name": "Stand-Up India",
+        "category": "startup",
+        "state": "All India",
+        "description": "Bank loans between Rs 10 lakh to Rs 1 crore for SC/ST and women entrepreneurs.",
+        "keywords": [
+          "st women",
+          "sc st",
+          "st",
+          "sc",
+          "entrepreneurs",
+          "women entrepreneurs"
+        ],
+        "sentiment": "neutral"
+      }
+    ],
+    [
+      {
+        "scheme_id": "widow-pension",
+        "name": "Indira Gandhi National Widow Pension",
+        "category": "pension",
+        "state": "All India",
+        "description": "Monthly pension for widows from BPL families aged 40-79 years.",
+        "keywords": [
+          "pension",
+          "bpl",
+          "aged 40",
+          "widows",
+          "widow",
+          "40 79"
+        ],
+        "sentiment": "neutral"
+      },
+      {
+        "scheme_id": "old-age-pension",
+        "name": "Indira Gandhi National Old Age Pension",
+        "category": "pension",
+        "state": "All India",
+        "description": "Monthly pension for senior citizens from BPL households.",
+        "keywords": [
+          "pension",
+          "bpl",
+          "senior",
+          "years rs",
+          "pension senior",
+          "60"
+        ],
+        "sentiment": "neutral"
+      },
+      {
+        "scheme_id": "disability-pension",
+        "name": "Indira Gandhi National Disability Pension",
+        "category": "pension",
+        "state": "All India",
+        "description": "Monthly pension for persons with severe and multiple disabilities from BPL families.",
+        "keywords": [
+          "pension",
+          "disability",
+          "bpl",
+          "multiple disabilities",
+          "multiple",
+          "persons"
+        ],
+        "sentiment": "neutral"
+      },
+      {
+        "scheme_id": "atal-pension",
+        "name": "Atal Pension Yojana",
+        "category": "pension",
+        "state": "All India",
+        "description": "Guaranteed pension of Rs 1000-5000/month after age 60 for unorganized sector workers.",
+        "keywords": [
+          "sector",
+          "unorganized sector",
+          "unorganized",
+          "pension",
+          "workers",
+          "guaranteed pension"
+        ],
+        "sentiment": "positive"
+      }
+    ],
+    [
+      {
+        "scheme_id": "sukanya-samriddhi",
+        "name": "Sukanya Samriddhi Yojana",
+        "category": "women",
+        "state": "All India",
+        "description": "Savings scheme for girl child with high interest rate and tax benefits.",
+        "keywords": [
+          "girl",
+          "girl child",
+          "child",
+          "rate",
+          "tax",
+          "high rate"
+        ],
+        "sentiment": "positive"
+      },
+      {
+        "scheme_id": "beti-bachao",
+        "name": "Beti Bachao Beti Padhao",
+        "category": "women",
+        "state": "All India",
+        "description": "Campaign to protect and educate the girl child, with focus on improving child sex ratio.",
+        "keywords": [
+          "girl",
+          "child",
+          "focus",
+          "beti",
+          "samriddhi account",
+          "samriddhi"
+        ],
+        "sentiment": "positive"
+      },
+      {
+        "scheme_id": "maternity-benefit",
+        "name": "Pradhan Mantri Matru Vandana Yojana",
+        "category": "women",
+        "state": "All India",
+        "description": "Cash benefit of Rs 5000 for pregnant and lactating mothers for first living child.",
+        "keywords": [
+          "rs 000",
+          "000",
+          "child",
+          "pregnant",
+          "lactating mothers",
+          "lactating"
+        ],
+        "sentiment": "positive"
+      }
+    ],
+    [
+      {
+        "scheme_id": "pm-kisan",
+        "name": "PM-KISAN Samman Nidhi",
+        "category": "farmer",
+        "state": "All India",
+        "description": "Direct income support of Rs 6000 per year to farmer families in three equal installments.",
+        "keywords": [
+          "farmer",
+          "rs 6000",
+          "income support",
+          "land",
+          "6000",
+          "6000 year"
+        ],
+        "sentiment": "positive"
+      },
+      {
+        "scheme_id": "pmjdy",
+        "name": "Pradhan Mantri Jan Dhan Yojana",
+        "category": "social_security",
+        "state": "All India",
+        "description": "Financial inclusion program providing zero-balance bank accounts with RuPay debit card and insurance coverage.",
+        "keywords": [
+          "balance",
+          "insurance",
+          "zero balance",
+          "rupay debit",
+          "balance bank",
+          "debit"
+        ],
+        "sentiment": "neutral"
+      },
+      {
+        "scheme_id": "pmsby",
+        "name": "Pradhan Mantri Suraksha Bima Yojana",
+        "category": "insurance",
+        "state": "All India",
+        "description": "Accidental insurance scheme offering Rs 2 lakh coverage for just Rs 20 per year.",
+        "keywords": [
+          "accidental",
+          "20 year",
+          "permanent",
+          "disability",
+          "rs",
+          "rs 20"
+        ],
+        "sentiment": "neutral"
+      },
+      {
+        "scheme_id": "pmjjby",
+        "name": "Pradhan Mantri Jeevan Jyoti Bima Yojana",
+        "category": "insurance",
+        "state": "All India",
+        "description": "Life insurance scheme with Rs 2 lakh coverage at Rs 436 per year premium.",
+        "keywords": [
+          "insurance",
+          "life",
+          "life insurance",
+          "coverage",
+          "436",
+          "rs 436"
+        ],
+        "sentiment": "neutral"
+      },
+      {
+        "scheme_id": "ayushman-bharat",
+        "name": "Ayushman Bharat PM-JAY",
+        "category": "health",
+        "state": "All India",
+        "description": "Health insurance of Rs 5 lakh per family per year for secondary and tertiary hospitalization.",
+        "keywords": [
+          "health",
+          "health insurance",
+          "family year",
+          "covers",
+          "year",
+          "insurance"
+        ],
+        "sentiment": "neutral"
+      },
+      {
+        "scheme_id": "pmfby",
+        "name": "Pradhan Mantri Fasal Bima Yojana",
+        "category": "farmer",
+        "state": "All India",
+        "description": "Crop insurance scheme protecting farmers against crop loss due to natural calamities.",
+        "keywords": [
+          "crop",
+          "farmers",
+          "insurance",
+          "crop loss",
+          "loanee",
+          "crops"
+        ],
+        "sentiment": "negative"
+      },
+      {
+        "scheme_id": "skill-india",
+        "name": "Pradhan Mantri Kaushal Vikas Yojana",
+        "category": "skill_development",
+        "state": "All India",
+        "description": "Free skill training and certification for Indian youth to improve employability.",
+        "keywords": [
+          "training",
+          "skill",
+          "skill training",
+          "free skill",
+          "youth",
+          "training certification"
+        ],
+        "sentiment": "positive"
+      }
+    ],
+    [
+      {
+        "scheme_id": "nsp-post-matric",
+        "name": "Post Matric Scholarship for SC Students",
+        "category": "scholarship",
+        "state": "All India",
+        "description": "Scholarship for SC students studying post-matriculation courses covering tuition fees and maintenance allowance.",
+        "keywords": [
+          "post",
+          "scholarship sc",
+          "sc",
+          "students",
+          "scholarship",
+          "studying post"
+        ],
+        "sentiment": "positive"
+      },
+      {
+        "scheme_id": "nsp-st-scholarship",
+        "name": "Post Matric Scholarship for ST Students",
+        "category": "scholarship",
+        "state": "All India",
+        "description": "Scholarship for ST students in post-matriculation courses to promote higher education.",
+        "keywords": [
+          "scholarship st",
+          "st",
+          "students",
+          "scholarship",
+          "st students",
+          "post"
+        ],
+        "sentiment": "positive"
+      },
+      {
+        "scheme_id": "obc-scholarship",
+        "name": "Post Matric Scholarship for OBC Students",
+        "category": "scholarship",
+        "state": "All India",
+        "description": "Financial assistance to OBC students for post-matriculation studies.",
+        "keywords": [
+          "obc",
+          "obc students",
+          "students",
+          "scholarship obc",
+          "post",
+          "scholarship"
+        ],
+        "sentiment": "positive"
+      },
+      {
+        "scheme_id": "minority-scholarship",
+        "name": "Merit-cum-Means Scholarship for Minorities",
+        "category": "scholarship",
+        "state": "All India",
+        "description": "Scholarship for meritorious students from minority communities pursuing professional and technical courses.",
+        "keywords": [
+          "minority",
+          "scholarship",
+          "minority communities",
+          "communities",
+          "students",
+          "rs"
+        ],
+        "sentiment": "positive"
+      }
+    ],
+    [
+      {
+        "scheme_id": "ujjwala",
+        "name": "Pradhan Mantri Ujjwala Yojana",
+        "category": "women",
+        "state": "All India",
+        "description": "Free LPG connections to women from BPL households to replace unclean cooking fuels.",
+        "keywords": [
+          "lpg",
+          "free",
+          "bpl",
+          "lpg connection",
+          "women bpl",
+          "free lpg"
+        ],
+        "sentiment": "positive"
+      },
+      {
+        "scheme_id": "free-ration",
+        "name": "Pradhan Mantri Garib Kalyan Anna Yojana",
+        "category": "social_security",
+        "state": "All India",
+        "description": "Free foodgrains to priority households and Antyodaya families through PDS.",
+        "keywords": [
+          "priority",
+          "priority households",
+          "families",
+          "households",
+          "kg",
+          "anna"
+        ],
+        "sentiment": "positive"
+      }
+    ]
+  ]
+}
